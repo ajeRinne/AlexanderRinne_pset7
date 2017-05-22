@@ -7,21 +7,36 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E803B68EBFEC0F37D2F9CFBD /* libPods-MyOwn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C3C530BDF62DE8D905C3532 /* libPods-MyOwn.a */; };
 		FABB65441ED1F2630060EFE9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABB65431ED1F2630060EFE9 /* AppDelegate.swift */; };
-		FABB65461ED1F2630060EFE9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABB65451ED1F2630060EFE9 /* ViewController.swift */; };
+		FABB65461ED1F2630060EFE9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABB65451ED1F2630060EFE9 /* LoginViewController.swift */; };
 		FABB65491ED1F2630060EFE9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FABB65471ED1F2630060EFE9 /* Main.storyboard */; };
-		FABB654B1ED1F2630060EFE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FABB654A1ED1F2630060EFE9 /* Assets.xcassets */; };
 		FABB654E1ED1F2630060EFE9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FABB654C1ED1F2630060EFE9 /* LaunchScreen.storyboard */; };
+		FABB655F1ED207220060EFE9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FABB655E1ED207220060EFE9 /* GoogleService-Info.plist */; };
+		FABB65621ED2CDB70060EFE9 /* PlaceItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABB65611ED2CDB70060EFE9 /* PlaceItem.swift */; };
+		FABB65641ED2CE690060EFE9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABB65631ED2CE690060EFE9 /* User.swift */; };
+		FABB65691ED2FEDD0060EFE9 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABB65681ED2FEDD0060EFE9 /* Button.swift */; };
+		FABB656A1ED30E780060EFE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FABB654A1ED1F2630060EFE9 /* Assets.xcassets */; };
+		FABB656F1ED320940060EFE9 /* PlacesItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABB656E1ED320940060EFE9 /* PlacesItemTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5C3C530BDF62DE8D905C3532 /* libPods-MyOwn.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MyOwn.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ACBFD60D70A846F34F3EA8F5 /* Pods-MyOwn.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyOwn.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyOwn/Pods-MyOwn.debug.xcconfig"; sourceTree = "<group>"; };
+		AF9B37A4EAECAEBF9C140501 /* Pods-MyOwn.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyOwn.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyOwn/Pods-MyOwn.release.xcconfig"; sourceTree = "<group>"; };
 		FABB65401ED1F2620060EFE9 /* MyOwn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyOwn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FABB65431ED1F2630060EFE9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FABB65451ED1F2630060EFE9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FABB65451ED1F2630060EFE9 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FABB65481ED1F2630060EFE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FABB654A1ED1F2630060EFE9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FABB654D1ED1F2630060EFE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FABB654F1ED1F2630060EFE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FABB655E1ED207220060EFE9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FABB65601ED227680060EFE9 /* MyOwn.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MyOwn.entitlements; sourceTree = "<group>"; };
+		FABB65611ED2CDB70060EFE9 /* PlaceItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaceItem.swift; path = ../PlaceItem.swift; sourceTree = "<group>"; };
+		FABB65631ED2CE690060EFE9 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = ../User.swift; sourceTree = "<group>"; };
+		FABB65681ED2FEDD0060EFE9 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		FABB656E1ED320940060EFE9 /* PlacesItemTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlacesItemTableViewController.swift; path = ../PlacesItemTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +44,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E803B68EBFEC0F37D2F9CFBD /* libPods-MyOwn.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		13B34E302FA41808A5D10F42 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				ACBFD60D70A846F34F3EA8F5 /* Pods-MyOwn.debug.xcconfig */,
+				AF9B37A4EAECAEBF9C140501 /* Pods-MyOwn.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		891DA51FEAA99F9635E185BF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5C3C530BDF62DE8D905C3532 /* libPods-MyOwn.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		FABB65371ED1F2620060EFE9 = {
 			isa = PBXGroup;
 			children = (
 				FABB65421ED1F2630060EFE9 /* MyOwn */,
 				FABB65411ED1F2620060EFE9 /* Products */,
+				13B34E302FA41808A5D10F42 /* Pods */,
+				891DA51FEAA99F9635E185BF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,8 +89,14 @@
 		FABB65421ED1F2630060EFE9 /* MyOwn */ = {
 			isa = PBXGroup;
 			children = (
+				FABB65601ED227680060EFE9 /* MyOwn.entitlements */,
+				FABB655E1ED207220060EFE9 /* GoogleService-Info.plist */,
 				FABB65431ED1F2630060EFE9 /* AppDelegate.swift */,
-				FABB65451ED1F2630060EFE9 /* ViewController.swift */,
+				FABB656E1ED320940060EFE9 /* PlacesItemTableViewController.swift */,
+				FABB65451ED1F2630060EFE9 /* LoginViewController.swift */,
+				FABB65681ED2FEDD0060EFE9 /* Button.swift */,
+				FABB65631ED2CE690060EFE9 /* User.swift */,
+				FABB65611ED2CDB70060EFE9 /* PlaceItem.swift */,
 				FABB65471ED1F2630060EFE9 /* Main.storyboard */,
 				FABB654A1ED1F2630060EFE9 /* Assets.xcassets */,
 				FABB654C1ED1F2630060EFE9 /* LaunchScreen.storyboard */,
@@ -71,9 +112,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FABB65521ED1F2630060EFE9 /* Build configuration list for PBXNativeTarget "MyOwn" */;
 			buildPhases = (
+				7D1E5D759B56E0B960A715EB /* [CP] Check Pods Manifest.lock */,
 				FABB653C1ED1F2620060EFE9 /* Sources */,
 				FABB653D1ED1F2620060EFE9 /* Frameworks */,
 				FABB653E1ED1F2620060EFE9 /* Resources */,
+				680E2A2EAED3C1CBD802CEA3 /* [CP] Embed Pods Frameworks */,
+				5415BE4262FAB748F3E7C26F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -96,7 +140,13 @@
 				TargetAttributes = {
 					FABB653F1ED1F2620060EFE9 = {
 						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = RF658R7Y87;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -124,20 +174,73 @@
 			buildActionMask = 2147483647;
 			files = (
 				FABB654E1ED1F2630060EFE9 /* LaunchScreen.storyboard in Resources */,
-				FABB654B1ED1F2630060EFE9 /* Assets.xcassets in Resources */,
+				FABB655F1ED207220060EFE9 /* GoogleService-Info.plist in Resources */,
+				FABB656A1ED30E780060EFE9 /* Assets.xcassets in Resources */,
 				FABB65491ED1F2630060EFE9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		5415BE4262FAB748F3E7C26F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyOwn/Pods-MyOwn-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		680E2A2EAED3C1CBD802CEA3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyOwn/Pods-MyOwn-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7D1E5D759B56E0B960A715EB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		FABB653C1ED1F2620060EFE9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FABB65461ED1F2630060EFE9 /* ViewController.swift in Sources */,
+				FABB65691ED2FEDD0060EFE9 /* Button.swift in Sources */,
+				FABB65641ED2CE690060EFE9 /* User.swift in Sources */,
+				FABB656F1ED320940060EFE9 /* PlacesItemTableViewController.swift in Sources */,
+				FABB65461ED1F2630060EFE9 /* LoginViewController.swift in Sources */,
 				FABB65441ED1F2630060EFE9 /* AppDelegate.swift in Sources */,
+				FABB65621ED2CDB70060EFE9 /* PlaceItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,8 +363,11 @@
 		};
 		FABB65531ED1F2630060EFE9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ACBFD60D70A846F34F3EA8F5 /* Pods-MyOwn.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MyOwn/MyOwn.entitlements;
+				DEVELOPMENT_TEAM = RF658R7Y87;
 				INFOPLIST_FILE = MyOwn/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nl.mprog.MyOwn;
@@ -272,8 +378,11 @@
 		};
 		FABB65541ED1F2630060EFE9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AF9B37A4EAECAEBF9C140501 /* Pods-MyOwn.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MyOwn/MyOwn.entitlements;
+				DEVELOPMENT_TEAM = RF658R7Y87;
 				INFOPLIST_FILE = MyOwn/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nl.mprog.MyOwn;
@@ -301,6 +410,7 @@
 				FABB65541ED1F2630060EFE9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
