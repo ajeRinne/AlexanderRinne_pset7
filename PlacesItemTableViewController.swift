@@ -8,11 +8,13 @@
 
 import UIKit
 import Firebase
+import FirebaseAuth
+import FirebaseDatabase
 
 class PlacesItemTableViewController: UITableViewController {
     
-    
-    let ref = Database.database().reference(withPath: "places-items")
+    // let ref = Database.self
+    let ref = Database.database().reference(withPath: "place-items")
     
     // MARK: Constants
     let listToUsers = "ListToUsers"
@@ -22,14 +24,30 @@ class PlacesItemTableViewController: UITableViewController {
     var user: User!
     var userCountBarButtonItem: UIBarButtonItem!
     
+    @IBOutlet var addBarButton: UIBarButtonItem!
     @IBAction func addBarButtonTouched(_ sender: Any) {
         let alert = UIAlertController(title: "Grocery Item", message: "Add an Item", preferredStyle: .alert)
         
-        let saveAction = UIAlertAction(title: "Save", style: .default) { action in
-            let textField = alert.textFields![0]
-            let placeItem = PlaceItem(name: textField.text!, addedByUser: self.user.email, completed: false)
-            self.items.append(placeItem)
-            self.tableView.reloadData()
+        let saveAction = UIAlertAction(title: "Save",
+                                       style: .default) { _ in
+                                        // 1
+                                        guard let textField = alert.textFields?.first,
+                                            let text = textField.text else { return }
+                                        
+                                        // 2
+                                        let placeItem = PlaceItem(name: text,
+                                                                      addedByUser: self.user.email,
+                                                                      completed: false)
+                                        // 3
+                                        let placeItemRef = self.ref.child(text.lowercased())
+                                        
+                                        // 4
+                                        placeItemRef.setValue(placeItem.toAnyObject())
+        }
+    }
+    
+    func removeBackButton(){
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
     
     
@@ -50,17 +68,22 @@ class PlacesItemTableViewController: UITableViewController {
         }
 
 
-    func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
+        removeBackButton()
+        //Auth.auth().addStateDidChangeListener { auth, user in
+        //     guard let currentUser = user else { return }
+        //    self.user = User(authData: currentUser)
+        //}
         
-        //tableView.allow
-        
-        //tableView.allowsMultipleSelectionDuringEditing = false
-        
+        ref.observe(.value, with: { snapshot in
+        print(snapshot.value!)
+    })
+    
         userCountBarButtonItem = UIBarButtonItem(title: "1",
                                                  style: .plain,
                                                  target: self,
-                                                 action: #selector(userCountBarButtonTouched()))
+                                                 action: #selector(userCountBarButtonTouched))
         userCountBarButtonItem.tintColor = UIColor.white
         navigationItem.leftBarButtonItem = userCountBarButtonItem
         
@@ -69,18 +92,18 @@ class PlacesItemTableViewController: UITableViewController {
     
     
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
     }
 
     // MARK: - Table view data source
 
-    func numberOfSections(in tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 0
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath)
         let groceryItem = items[indexPath.row]
         
@@ -91,18 +114,18 @@ class PlacesItemTableViewController: UITableViewController {
         
         return cell
     }
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             items.remove(at: indexPath.row)
             tableView.reloadData()
         }
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) else { return }
         var groceryItem = items[indexPath.row]
         let toggledCompletion = !groceryItem.completed
@@ -111,6 +134,4 @@ class PlacesItemTableViewController: UITableViewController {
         groceryItem.completed = toggledCompletion
             tableView.reloadData()
     }
-
-}
 }

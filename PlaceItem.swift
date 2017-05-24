@@ -8,13 +8,14 @@
 
 import Foundation
 import Firebase
+import FirebaseDatabase
 
 struct PlaceItem {
     
     let key: String
     let name: String
     let addedByUser: String
-    let ref: DatabaseReference?
+    // var ref: DatabaseReference?
     var completed: Bool
     
     init(name: String, addedByUser: String, completed: Bool, key: String = "") {
@@ -22,7 +23,7 @@ struct PlaceItem {
         self.name = name
         self.addedByUser = addedByUser
         self.completed = completed
-        self.ref = nil
+        // self.ref = nil
     }
     
     init(snapshot: DataSnapshot) {
@@ -31,7 +32,7 @@ struct PlaceItem {
         name = snapshotValue["name"] as! String
         addedByUser = snapshotValue["addedByUser"] as! String
         completed = snapshotValue["completed"] as! Bool
-        ref = snapshot.ref
+        // ref = snapshot.ref
     }
     
     func toAnyObject() -> Any {

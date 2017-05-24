@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Log In View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LogInViewController" customModule="MyOwn" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="MyOwn" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -57,10 +57,7 @@
                                                 </constraints>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                                <connections>
-                                                    <action selector="logInButtonTouch:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="BKN-iA-PJD"/>
-                                                </connections>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Riu-Y7-ebm" customClass="Button" customModule="MyOwn" customModuleProvider="target">
                                                 <rect key="frame" x="40" y="108" width="70" height="20"/>
@@ -84,6 +81,9 @@
                                                         <real key="value" value="0.0"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="loginButtonTouch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="K6p-Pz-Xri"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lkX-y7-9cy" customClass="Button" customModule="MyOwn" customModuleProvider="target">
                                                 <rect key="frame" x="40" y="152" width="70" height="20"/>
@@ -118,6 +118,7 @@
                                     </stackView>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="253" id="A3M-dq-cQb"/>
                                     <constraint firstItem="dZ8-IE-RsC" firstAttribute="leading" secondItem="ZJu-qi-KJG" secondAttribute="leading" constant="42" id="CDV-ZV-clf"/>
                                     <constraint firstItem="dZ8-IE-RsC" firstAttribute="top" relation="lessThanOrEqual" secondItem="ZJu-qi-KJG" secondAttribute="top" constant="30" id="JPf-Jf-H9L"/>
                                 </constraints>
@@ -139,12 +140,16 @@
                     </view>
                     <navigationItem key="navigationItem" id="bsO-NS-cDB"/>
                     <connections>
+                        <outlet property="loginButton" destination="Riu-Y7-ebm" id="s73-ij-T50"/>
+                        <outlet property="loginTextField" destination="C9h-qj-h96" id="LIV-ie-DhP"/>
+                        <outlet property="passwordTextField" destination="06m-1J-Wwx" id="oUO-1s-fDf"/>
+                        <outlet property="registerButton" destination="lkX-y7-9cy" id="kft-K7-9T0"/>
                         <segue destination="U0O-WJ-WLM" kind="show" identifier="loginToList" id="eMd-Cy-ciz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1076" y="138.98050974512745"/>
+            <point key="canvasLocation" x="-1118" y="136"/>
         </scene>
         <!--Places-->
         <scene sceneID="hsf-fV-mXf">
@@ -155,7 +160,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="SU5-9C-VTB">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItemCell" id="SU5-9C-VTB">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SU5-9C-VTB" id="Sp1-mF-EZO">
@@ -178,12 +183,13 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addBarButton" destination="NcQ-U0-ach" id="mHo-vu-SjP"/>
                         <segue destination="Vx4-f2-swl" kind="show" identifier="ListToUsers" id="Mv5-of-kvE"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kfC-bJ-tlp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1846" y="138"/>
+            <point key="canvasLocation" x="-313" y="135"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0YU-43-Q2k">
@@ -201,18 +207,18 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ej8-4Z-HaR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="138.98050974512745"/>
+            <point key="canvasLocation" x="-1866" y="137"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Title-->
         <scene sceneID="eba-lh-FEY">
             <objects>
-                <tableViewController id="Vx4-f2-swl" sceneMemberID="viewController">
+                <tableViewController id="Vx4-f2-swl" customClass="OnlineUsersTableViewController" customModule="MyOwn" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="obw-vD-WI3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="gYH-dg-m71">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserCell" id="gYH-dg-m71">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gYH-dg-m71" id="8Np-kh-KhI">
@@ -226,10 +232,21 @@
                             <outlet property="delegate" destination="Vx4-f2-swl" id="a6H-0E-6gs"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Title" id="N68-Gc-Icd">
+                        <barButtonItem key="rightBarButtonItem" title="Log Out" id="BfB-7b-tXA">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="logOutButtonTouch:" destination="Vx4-f2-swl" id="rD3-I0-v6X"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="logoutButton" destination="BfB-7b-tXA" id="Dvi-D1-M4m"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hAA-0p-f9g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2532" y="137"/>
+            <point key="canvasLocation" x="522" y="134"/>
         </scene>
     </scenes>
     <resources>

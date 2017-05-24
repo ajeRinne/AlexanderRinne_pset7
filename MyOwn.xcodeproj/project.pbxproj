@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E803B68EBFEC0F37D2F9CFBD /* libPods-MyOwn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C3C530BDF62DE8D905C3532 /* libPods-MyOwn.a */; };
+		BE739B5300A76EC1CDBD3384 /* Pods_MyOwn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37968EECD2ABC40609F26283 /* Pods_MyOwn.framework */; };
 		FABB65441ED1F2630060EFE9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABB65431ED1F2630060EFE9 /* AppDelegate.swift */; };
 		FABB65461ED1F2630060EFE9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABB65451ED1F2630060EFE9 /* LoginViewController.swift */; };
 		FABB65491ED1F2630060EFE9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FABB65471ED1F2630060EFE9 /* Main.storyboard */; };
@@ -18,10 +18,11 @@
 		FABB65691ED2FEDD0060EFE9 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABB65681ED2FEDD0060EFE9 /* Button.swift */; };
 		FABB656A1ED30E780060EFE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FABB654A1ED1F2630060EFE9 /* Assets.xcassets */; };
 		FABB656F1ED320940060EFE9 /* PlacesItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABB656E1ED320940060EFE9 /* PlacesItemTableViewController.swift */; };
+		FABB65711ED346480060EFE9 /* OnlineUsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABB65701ED346480060EFE9 /* OnlineUsersTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5C3C530BDF62DE8D905C3532 /* libPods-MyOwn.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MyOwn.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		37968EECD2ABC40609F26283 /* Pods_MyOwn.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyOwn.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACBFD60D70A846F34F3EA8F5 /* Pods-MyOwn.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyOwn.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyOwn/Pods-MyOwn.debug.xcconfig"; sourceTree = "<group>"; };
 		AF9B37A4EAECAEBF9C140501 /* Pods-MyOwn.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyOwn.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyOwn/Pods-MyOwn.release.xcconfig"; sourceTree = "<group>"; };
 		FABB65401ED1F2620060EFE9 /* MyOwn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyOwn.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -37,6 +38,7 @@
 		FABB65631ED2CE690060EFE9 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = ../User.swift; sourceTree = "<group>"; };
 		FABB65681ED2FEDD0060EFE9 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		FABB656E1ED320940060EFE9 /* PlacesItemTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlacesItemTableViewController.swift; path = ../PlacesItemTableViewController.swift; sourceTree = "<group>"; };
+		FABB65701ED346480060EFE9 /* OnlineUsersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OnlineUsersTableViewController.swift; path = ../OnlineUsersTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,7 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E803B68EBFEC0F37D2F9CFBD /* libPods-MyOwn.a in Frameworks */,
+				BE739B5300A76EC1CDBD3384 /* Pods_MyOwn.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,7 +65,7 @@
 		891DA51FEAA99F9635E185BF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				5C3C530BDF62DE8D905C3532 /* libPods-MyOwn.a */,
+				37968EECD2ABC40609F26283 /* Pods_MyOwn.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -91,6 +93,7 @@
 			children = (
 				FABB65601ED227680060EFE9 /* MyOwn.entitlements */,
 				FABB655E1ED207220060EFE9 /* GoogleService-Info.plist */,
+				FABB65701ED346480060EFE9 /* OnlineUsersTableViewController.swift */,
 				FABB65431ED1F2630060EFE9 /* AppDelegate.swift */,
 				FABB656E1ED320940060EFE9 /* PlacesItemTableViewController.swift */,
 				FABB65451ED1F2630060EFE9 /* LoginViewController.swift */,
@@ -239,6 +242,7 @@
 				FABB65641ED2CE690060EFE9 /* User.swift in Sources */,
 				FABB656F1ED320940060EFE9 /* PlacesItemTableViewController.swift in Sources */,
 				FABB65461ED1F2630060EFE9 /* LoginViewController.swift in Sources */,
+				FABB65711ED346480060EFE9 /* OnlineUsersTableViewController.swift in Sources */,
 				FABB65441ED1F2630060EFE9 /* AppDelegate.swift in Sources */,
 				FABB65621ED2CDB70060EFE9 /* PlaceItem.swift in Sources */,
 			);
