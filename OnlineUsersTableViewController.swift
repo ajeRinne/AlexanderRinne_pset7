@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class OnlineUsersTableViewController: UITableViewController {
 
@@ -16,10 +17,18 @@ class OnlineUsersTableViewController: UITableViewController {
     // MARK: Properties
     var currentUsers: [String] = []
     
+    @IBOutlet var logoutBarButton2: UINavigationItem!
     
-    @IBAction func logOutButtonTouch(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+    @IBAction func logoutButton2Touched(_ sender: Any) {
+        do {
+            try Auth.auth().signOut()
+            dismiss(animated: true, completion: nil)
+        } catch {
+            print("Could not sign out: \(error)")
+        }
+
     }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()

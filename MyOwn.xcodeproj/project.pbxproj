@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BE739B5300A76EC1CDBD3384 /* Pods_MyOwn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37968EECD2ABC40609F26283 /* Pods_MyOwn.framework */; };
+		FA2099AE1ED5C04E00CB96A0 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA2099AD1ED5C04E00CB96A0 /* AdSupport.framework */; };
 		FABB65441ED1F2630060EFE9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABB65431ED1F2630060EFE9 /* AppDelegate.swift */; };
 		FABB65461ED1F2630060EFE9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABB65451ED1F2630060EFE9 /* LoginViewController.swift */; };
 		FABB65491ED1F2630060EFE9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FABB65471ED1F2630060EFE9 /* Main.storyboard */; };
@@ -25,6 +26,7 @@
 		37968EECD2ABC40609F26283 /* Pods_MyOwn.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyOwn.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACBFD60D70A846F34F3EA8F5 /* Pods-MyOwn.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyOwn.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyOwn/Pods-MyOwn.debug.xcconfig"; sourceTree = "<group>"; };
 		AF9B37A4EAECAEBF9C140501 /* Pods-MyOwn.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyOwn.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyOwn/Pods-MyOwn.release.xcconfig"; sourceTree = "<group>"; };
+		FA2099AD1ED5C04E00CB96A0 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		FABB65401ED1F2620060EFE9 /* MyOwn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyOwn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FABB65431ED1F2630060EFE9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FABB65451ED1F2630060EFE9 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -46,6 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA2099AE1ED5C04E00CB96A0 /* AdSupport.framework in Frameworks */,
 				BE739B5300A76EC1CDBD3384 /* Pods_MyOwn.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -65,6 +68,7 @@
 		891DA51FEAA99F9635E185BF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FA2099AD1ED5C04E00CB96A0 /* AdSupport.framework */,
 				37968EECD2ABC40609F26283 /* Pods_MyOwn.framework */,
 			);
 			name = Frameworks;

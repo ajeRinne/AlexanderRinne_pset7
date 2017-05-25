@@ -34,6 +34,7 @@ class LoginViewController: UIViewController {
             Auth.auth().signIn(withEmail: loginText!, password: passwordText!) { user, error in
                 if error == nil {
                     // 3
+                    print("perform segue login")
                     self.performSegue(withIdentifier: "loginToList", sender: nil)
                 } else {
                     print("could not login: \(error!)")
@@ -55,6 +56,7 @@ class LoginViewController: UIViewController {
             Auth.auth().createUser(withEmail: emailField.text!, password: passwordField.text!) { user, error in
                 if error == nil {
                     // 3
+                    print("perform segue register")
                     self.performSegue(withIdentifier: "loginToList", sender: nil)
                 } else {
                     print("could not register: \(error!)")
@@ -92,6 +94,7 @@ class LoginViewController: UIViewController {
             // 2
             if user != nil {
                 // 3
+                print("perform segue loaded")
                 self.performSegue(withIdentifier: "loginToList", sender: nil)
             }
         }

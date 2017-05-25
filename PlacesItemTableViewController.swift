@@ -15,7 +15,7 @@ class PlacesItemTableViewController: UITableViewController {
     
     // let ref = Database.self
     let ref = Database.database().reference(withPath: "place-items")
-    
+    let usersRef = Database.database().reference(withPath: "online")
     // MARK: Constants
     let listToUsers = "ListToUsers"
     
@@ -25,29 +25,44 @@ class PlacesItemTableViewController: UITableViewController {
     var userCountBarButtonItem: UIBarButtonItem!
     
     @IBOutlet var addBarButton: UIBarButtonItem!
-    @IBAction func addBarButtonTouched(_ sender: Any) {
-        let alert = UIAlertController(title: "Grocery Item", message: "Add an Item", preferredStyle: .alert)
-        
-        let saveAction = UIAlertAction(title: "Save",
-                                       style: .default) { _ in
-                                        // 1
-                                        guard let textField = alert.textFields?.first,
-                                            let text = textField.text else { return }
-                                        
-                                        // 2
-                                        let placeItem = PlaceItem(name: text,
-                                                                      addedByUser: self.user.email,
-                                                                      completed: false)
-                                        // 3
-                                        let placeItemRef = self.ref.child(text.lowercased())
-                                        
-                                        // 4
-                                        placeItemRef.setValue(placeItem.toAnyObject())
+    
+    @IBOutlet var logoutBarButton: UIBarButtonItem!
+    
+    @IBAction func logoutBarButtonTouched(_ sender: Any) {
+        do {
+            try Auth.auth().signOut()
+            dismiss(animated: true, completion: nil)
+        } catch {
+            print("Could not sign out: \(error)")
         }
     }
-    
-    func removeBackButton(){
-        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+    @IBAction func addBarButtonTouched(_ sender: Any) {
+        let alert = UIAlertController(title: "Place Item", message: "Add an Item", preferredStyle: .alert)
+        
+        let saveAction = UIAlertAction(title: "Save", style: .default) { action in
+            
+            // 1
+            guard let textField = alert.textFields?.first, let text = textField.text else { return }
+            
+            // 2
+            let placeItem = PlaceItem(name: text, addedByUser: self.user.email, completed: false)
+            
+            // 3
+            let placeItemRef = self.ref.child(text.lowercased())
+            
+            // 4
+            placeItemRef.setValue(placeItem.toAnyObject())
+        }
+        let cancelAction = UIAlertAction(title: "Cancel",
+                                         style: .default)
+        
+        alert.addTextField()
+        
+        alert.addAction(saveAction)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true, completion: nil)
+
     }
     
     
@@ -70,12 +85,12 @@ class PlacesItemTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        removeBackButton()
-        //Auth.auth().addStateDidChangeListener { auth, user in
-        //     guard let currentUser = user else { return }
-        //    self.user = User(authData: currentUser)
-        //}
         
+        Auth.auth().addStateDidChangeListener { auth, user in
+            guard let user = user else { return }
+            self.user = User(authData: user)
+        }
+
         ref.observe(.value, with: { snapshot in
         print(snapshot.value!)
     })
