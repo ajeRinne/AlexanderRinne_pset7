@@ -13,12 +13,12 @@ import FirebaseDatabase
 
 class PlacesItemTableViewController: UITableViewController {
     
-    let placeRef = Database.database().reference(withPath: "place-items")
+    let placesRef = Database.database().reference(withPath: "place-items")
     let usersRef = Database.database().reference(withPath: "online")
     let listToUsers = "ListToUsers"
     var items: [PlaceItem] = []
     let user = Auth.auth().currentUser
-    var itemsCount : Int?
+//    var itemsCount : Int?
     var currentPlace : String = ""
     var joiningUser: String = ""
 //    var userAuth : String = ""
@@ -49,7 +49,7 @@ class PlacesItemTableViewController: UITableViewController {
             let placeItem = PlaceItem(name: text, addedByUser: (self.user?.email!)!, completed: false, joiningUsers: (self.user?.email!)!)
             
             // 3
-           let placeItemRef = self.placeRef.child(text.lowercased())
+           let placeItemRef = self.placesRef.child(text.lowercased())
             
             // 4
             placeItemRef.setValue(placeItem.toAnyObject())
@@ -57,8 +57,6 @@ class PlacesItemTableViewController: UITableViewController {
 //            let joiningUserRef = placeItemRef.child(self.joiningUser)
             
 
-
-            self.itemsCount! += 1
         }
         let cancelAction = UIAlertAction(title: "Cancel",
                                          style: .default)
@@ -107,12 +105,12 @@ class PlacesItemTableViewController: UITableViewController {
         // 3
 //        currentUserRef.onDisconnectRemoveValue()
 
-        placeRef.observe(.value, with: { snapshot in
+        placesRef.observe(.value, with: { snapshot in
         print(snapshot.value!)
         })
 
-        if (itemsCount != 0 ) {
-            placeRef.queryOrdered(byChild: "completed").observe(.value, with: { snapshot in
+//        if items.count != 0 {
+            placesRef.queryOrdered(byChild: "completed").observe(.value, with: { snapshot in
                 var newItems: [PlaceItem] = []
             
                 for item in snapshot.children {
@@ -123,7 +121,7 @@ class PlacesItemTableViewController: UITableViewController {
                 self.items = newItems
                 self.tableView.reloadData()
             })
-        }
+//        }
 
     }
     
@@ -178,7 +176,6 @@ class PlacesItemTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             items.remove(at: indexPath.row)
-            itemsCount! -= 1
             tableView.reloadData()
         }
     }

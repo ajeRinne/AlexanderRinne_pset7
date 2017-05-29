@@ -1,5 +1,5 @@
 //
-//  OnlineUsersTableViewController.swift
+//  JoiningUsersTableViewController.swift
 //  MyOwn
 //
 //  Created by Alexander Rinne on 22-05-17.
@@ -14,7 +14,8 @@ class JoiningUsersTableViewController: UITableViewController {
     var currentPlace : String?
     let userCell = "UserCell"
     let user = Auth.auth().currentUser
-    let JoiningUsersRef = Database.database().reference(withPath: "place-items")
+    let placesRef = Database.database().reference(withPath: "place-items")
+//    var currentPlaceRef: Any?
     // MARK: Properties
     var joiningUsers: [String] = []
     
@@ -25,6 +26,18 @@ class JoiningUsersTableViewController: UITableViewController {
     @IBOutlet var joinBarButton: UIBarButtonItem!
     
     @IBAction func joinBarButtonTouched(_ sender: Any) {
+        let currentPlaceRef = placesRef.child(currentPlace!.lowercased()).child("joiningUserEmail").child("email")
+        currentPlaceRef.setValue(self.user?.email!)
+//            .child("joiningUsers").setValue(["username": user])
+        
+//        let joiningUser = currentPlaceRef.child("joiningUsers").Child.setValue(user)
+        print("check7: \(currentPlace!)")
+        placesRef.observe(.value, with: {snapshot in
+            print(snapshot.value!)
+        })
+        currentPlaceRef.observe(.value, with: {snapshot in
+            print(snapshot.value!)
+        })
     }
     @IBAction func logoutBarButton2Touched(_ sender: Any) {
         do {
@@ -35,12 +48,11 @@ class JoiningUsersTableViewController: UITableViewController {
         }
 
     }
-
-    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("Check7: \(String(describing: currentPlace))")
-        joiningUsers.append("hungry@person.food")
+
+//        joiningUsers.append("hungry@person.food")
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
