@@ -150,18 +150,48 @@
         <scene sceneID="hsf-fV-mXf">
             <objects>
                 <tableViewController id="U0O-WJ-WLM" customClass="PlacesItemTableViewController" customModule="MyOwn" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="D00-3d-rm6" customClass="Places" customModule="MyOwn" customModuleProvider="target">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="D00-3d-rm6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItemCell" id="SU5-9C-VTB">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlacesCell" id="SU5-9C-VTB" customClass="PlaceTableViewCell" customModule="MyOwn">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SU5-9C-VTB" id="Sp1-mF-EZO">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RA7-l7-aXD">
+                                            <rect key="frame" x="8" y="0.0" width="317" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4wx-Cb-Lcy">
+                                            <rect key="frame" x="16" y="15" width="309" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="4wx-Cb-Lcy" firstAttribute="bottom" secondItem="Sp1-mF-EZO" secondAttribute="bottomMargin" id="AyW-Hw-QGC"/>
+                                        <constraint firstItem="4wx-Cb-Lcy" firstAttribute="top" secondItem="Sp1-mF-EZO" secondAttribute="topMargin" constant="7" id="SfQ-eg-CgY"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="4wx-Cb-Lcy" secondAttribute="trailing" constant="42" id="clg-cN-UaC"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="4wx-Cb-Lcy" secondAttribute="trailing" constant="42" id="lHx-Ea-fKS"/>
+                                        <constraint firstItem="4wx-Cb-Lcy" firstAttribute="bottom" secondItem="Sp1-mF-EZO" secondAttribute="bottomMargin" id="mLf-gv-tYs"/>
+                                        <constraint firstItem="4wx-Cb-Lcy" firstAttribute="leading" secondItem="Sp1-mF-EZO" secondAttribute="leadingMargin" constant="8" id="pC2-xk-oVc"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" button="YES"/>
+                                </accessibility>
+                                <connections>
+                                    <outlet property="addedByLabel" destination="4wx-Cb-Lcy" id="F0D-LV-a2H"/>
+                                    <outlet property="placeLabel" destination="RA7-l7-aXD" id="R5b-VV-jF6"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -193,12 +223,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kfC-bJ-tlp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="273.5" y="134.5"/>
+            <point key="canvasLocation" x="272.80000000000001" y="134.48275862068968"/>
         </scene>
-        <!--Title-->
+        <!--Joining Users-->
         <scene sceneID="eba-lh-FEY">
             <objects>
-                <tableViewController id="Vx4-f2-swl" customClass="OnlineUsersTableViewController" customModule="MyOwn" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="Vx4-f2-swl" customClass="JoiningUsersTableViewController" customModule="MyOwn" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="obw-vD-WI3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -218,17 +248,25 @@
                             <outlet property="delegate" destination="Vx4-f2-swl" id="a6H-0E-6gs"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Title" id="N68-Gc-Icd">
-                        <barButtonItem key="rightBarButtonItem" title="Log Out" id="BfB-7b-tXA">
-                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <connections>
-                                <action selector="logoutButton2Touched:" destination="Vx4-f2-swl" id="FDD-hv-JfK"/>
-                            </connections>
-                        </barButtonItem>
+                    <navigationItem key="navigationItem" title="Joining Users" id="N68-Gc-Icd">
+                        <rightBarButtonItems>
+                            <barButtonItem title="Join" id="RJS-Y1-fbB">
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="joinBarButtonTouched:" destination="Vx4-f2-swl" id="ij0-tN-WWg"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Log Out" id="BfB-7b-tXA">
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="logoutBarButton2Touched:" destination="Vx4-f2-swl" id="eUu-nB-Xk2"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
-                        <outlet property="logoutBarButton2" destination="N68-Gc-Icd" id="qB6-L0-nWv"/>
-                        <outlet property="logoutButton" destination="BfB-7b-tXA" id="Dvi-D1-M4m"/>
+                        <outlet property="joinBarButton" destination="RJS-Y1-fbB" id="FzW-t8-qXH"/>
+                        <outlet property="logoutBarButton2" destination="BfB-7b-tXA" id="vpO-ex-lBe"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hAA-0p-f9g" userLabel="First Responder" sceneMemberID="firstResponder"/>

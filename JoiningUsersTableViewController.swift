@@ -9,17 +9,24 @@
 import UIKit
 import Firebase
 
-class OnlineUsersTableViewController: UITableViewController {
-
+class JoiningUsersTableViewController: UITableViewController {
     // MARK: Constants
+    var currentPlace : String?
     let userCell = "UserCell"
-    
+    let user = Auth.auth().currentUser
+    let JoiningUsersRef = Database.database().reference(withPath: "place-items")
     // MARK: Properties
-    var currentUsers: [String] = []
+    var joiningUsers: [String] = []
     
-    @IBOutlet var logoutBarButton2: UINavigationItem!
     
-    @IBAction func logoutButton2Touched(_ sender: Any) {
+
+    @IBOutlet var logoutBarButton2: UIBarButtonItem!
+    
+    @IBOutlet var joinBarButton: UIBarButtonItem!
+    
+    @IBAction func joinBarButtonTouched(_ sender: Any) {
+    }
+    @IBAction func logoutBarButton2Touched(_ sender: Any) {
         do {
             try Auth.auth().signOut()
             dismiss(animated: true, completion: nil)
@@ -32,20 +39,21 @@ class OnlineUsersTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        currentUsers.append("hungry@person.food")
+        print("Check7: \(String(describing: currentPlace))")
+        joiningUsers.append("hungry@person.food")
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return currentUsers.count
+        return joiningUsers.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: userCell, for: indexPath)
-        let onlineUserEmail = currentUsers[indexPath.row]
+        let onlineUserEmail = joiningUsers[indexPath.row]
         cell.textLabel?.text = onlineUserEmail
         return cell
     }
     
-
+    
 
 }

@@ -13,15 +13,16 @@ import FirebaseDatabase
 
 class PlacesItemTableViewController: UITableViewController {
     
-    // let ref = Database.self
-    let ref = Database.database().reference(withPath: "place-items")
+    let placeRef = Database.database().reference(withPath: "place-items")
     let usersRef = Database.database().reference(withPath: "online")
-    // MARK: Constants
     let listToUsers = "ListToUsers"
-    
-    // MARK: Properties
     var items: [PlaceItem] = []
-    var user: User!
+    let user = Auth.auth().currentUser
+    var itemsCount : Int?
+    var currentPlace : String = ""
+    var joiningUser: String = ""
+//    var userAuth : String = ""
+    
     var userCountBarButtonItem: UIBarButtonItem!
     
     @IBOutlet var addBarButton: UIBarButtonItem!
@@ -44,14 +45,20 @@ class PlacesItemTableViewController: UITableViewController {
             // 1
             guard let textField = alert.textFields?.first, let text = textField.text else { return }
             
-            // 2
-            let placeItem = PlaceItem(name: text, addedByUser: self.user.email, completed: false)
+            // 2            
+            let placeItem = PlaceItem(name: text, addedByUser: (self.user?.email!)!, completed: false, joiningUsers: (self.user?.email!)!)
             
             // 3
-            let placeItemRef = self.ref.child(text.lowercased())
+           let placeItemRef = self.placeRef.child(text.lowercased())
             
             // 4
             placeItemRef.setValue(placeItem.toAnyObject())
+            
+//            let joiningUserRef = placeItemRef.child(self.joiningUser)
+            
+
+
+            self.itemsCount! += 1
         }
         let cancelAction = UIAlertAction(title: "Cancel",
                                          style: .default)
@@ -65,67 +72,102 @@ class PlacesItemTableViewController: UITableViewController {
 
     }
     
-    
-    func toggleCellCheckbox(_ cell: UITableViewCell, isCompleted: Bool) {
-        if !isCompleted {
-            cell.accessoryType = .none
-            cell.textLabel?.textColor = UIColor.black
-            cell.detailTextLabel?.textColor = UIColor.black
-        } else {
-            cell.accessoryType = .checkmark
-            cell.textLabel?.textColor = UIColor.gray
-            cell.detailTextLabel?.textColor = UIColor.gray
-        }
-    }
-    
-    func userCountBarButtonTouched() {
-        performSegue(withIdentifier: listToUsers, sender: nil)
-        }
+//    
+//    func toggleCellCheckbox(_ cell: UITableViewCell, isCompleted: Bool) {
+//        if !isCompleted {
+//            cell.accessoryType = .none
+//            cell.textLabel?.textColor = UIColor.black
+//            cell.detailTextLabel?.textColor = UIColor.black
+//        } else {
+//            cell.accessoryType = .checkmark
+//            cell.textLabel?.textColor = UIColor.gray
+//            cell.detailTextLabel?.textColor = UIColor.gray
+//        }
+//    }
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         Auth.auth().addStateDidChangeListener { auth, user in
-            guard let user = user else { return }
-            self.user = User(authData: user)
+            guard let currentUser = user else { return }
+            if Auth.auth().currentUser == nil {
+                print("no user signed it")
+            } else {
+                print("signed in")
+            }
+
+//            let currentUserRef = self.usersRef.child(self.user.userID)
+//            currentUserRef.setValue(self.user.email)
+//            currentUserRef.onDisconnectRemoveValue()
+        }
+        
+//        let currentUserRef = self.usersRef.child(self.user.userID)
+        // 2
+//        currentUserRef.setValue(self.user.email)
+        // 3
+//        currentUserRef.onDisconnectRemoveValue()
+
+        placeRef.observe(.value, with: { snapshot in
+        print(snapshot.value!)
+        })
+
+        if (itemsCount != 0 ) {
+            placeRef.queryOrdered(byChild: "completed").observe(.value, with: { snapshot in
+                var newItems: [PlaceItem] = []
+            
+                for item in snapshot.children {
+                    let placeItem = PlaceItem(snapshot: item as! DataSnapshot)
+                    newItems.append(placeItem)
+                }
+            
+                self.items = newItems
+                self.tableView.reloadData()
+            })
         }
 
-        ref.observe(.value, with: { snapshot in
-        print(snapshot.value!)
-    })
-    
-        userCountBarButtonItem = UIBarButtonItem(title: "1",
-                                                 style: .plain,
-                                                 target: self,
-                                                 action: #selector(userCountBarButtonTouched))
-        userCountBarButtonItem.tintColor = UIColor.white
-        navigationItem.leftBarButtonItem = userCountBarButtonItem
-        
-        // user = User(uid: "FakeId", email: "hungry@person.food")
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == listToUsers) {
+            let viewController = segue.destination as! JoiningUsersTableViewController
+            let indexPath = tableView.indexPathForSelectedRow
+            if indexPath != nil {
+                let placeItem = items[indexPath!.row]
+                print("check5: \(placeItem)")
+                let place = placeItem.name
+                print("chekc6: \(place)")
+                viewController.currentPlace = place
+                
+            }
+        }
+    }
+
     
+
+    // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
     }
 
-    // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath)
-        let groceryItem = items[indexPath.row]
         
-        cell.textLabel?.text = groceryItem.name
-        cell.detailTextLabel?.text = groceryItem.addedByUser
         
-        toggleCellCheckbox(cell, isCompleted: groceryItem.completed)
+
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PlacesCell", for: indexPath) as! PlaceTableViewCell
+        let placeItem = items[indexPath.row]
+        
+//        toggleCellCheckbox(cell, isCompleted: placeItem.completed)
+        
+        cell.placeLabel.text = placeItem.name
+        cell.addedByLabel.text = placeItem.addedByUser
+        
+
         
         return cell
     }
@@ -136,17 +178,17 @@ class PlacesItemTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             items.remove(at: indexPath.row)
+            itemsCount! -= 1
             tableView.reloadData()
         }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let cell = tableView.cellForRow(at: indexPath) else { return }
-        var groceryItem = items[indexPath.row]
-        let toggledCompletion = !groceryItem.completed
         
-        toggleCellCheckbox(cell, isCompleted: toggledCompletion)
-        groceryItem.completed = toggledCompletion
-            tableView.reloadData()
+                self.performSegue(withIdentifier: listToUsers, sender: nil)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        tableView.reloadData()
     }
 }
