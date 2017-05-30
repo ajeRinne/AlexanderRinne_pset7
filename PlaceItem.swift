@@ -17,7 +17,6 @@ struct PlaceItem {
     let addedByUser: String
     var completed: Bool
     let joiningUsers: String
-    // var ref: DatabaseReference?
     
     init(name: String, addedByUser: String, completed: Bool, key: String = "", joiningUsers: String) {
         self.key = key
@@ -47,5 +46,5 @@ struct PlaceItem {
             "joiningUsers":joiningUsers
         ]
     }
-        
+    
 }

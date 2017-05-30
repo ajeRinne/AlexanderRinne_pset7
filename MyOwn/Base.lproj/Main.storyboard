@@ -234,13 +234,30 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserCell" id="gYH-dg-m71">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="JoiningUserCell" id="gYH-dg-m71" customClass="JoiningUsersTableViewCell" customModule="MyOwn" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gYH-dg-m71" id="8Np-kh-KhI">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="user" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s3T-xZ-UBY">
+                                            <rect key="frame" x="8" y="11" width="359" height="22"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="s3T-xZ-UBY" firstAttribute="top" secondItem="8Np-kh-KhI" secondAttribute="topMargin" constant="3" id="8Ss-hl-10A"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="s3T-xZ-UBY" secondAttribute="bottom" constant="3" id="Npd-Bg-ROk"/>
+                                        <constraint firstItem="s3T-xZ-UBY" firstAttribute="trailing" secondItem="8Np-kh-KhI" secondAttribute="trailingMargin" id="dbQ-Pw-orF"/>
+                                        <constraint firstItem="s3T-xZ-UBY" firstAttribute="leading" secondItem="8Np-kh-KhI" secondAttribute="leadingMargin" id="rLa-HN-b6o"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="userLabel" destination="s3T-xZ-UBY" id="mhe-qe-gRa"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -271,7 +288,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hAA-0p-f9g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1108.5" y="133.5"/>
+            <point key="canvasLocation" x="1108" y="132.68365817091455"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="9tS-Xk-mmC">

@@ -20,6 +20,7 @@
 		FABB656A1ED30E780060EFE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FABB654A1ED1F2630060EFE9 /* Assets.xcassets */; };
 		FABB656F1ED320940060EFE9 /* PlacesItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABB656E1ED320940060EFE9 /* PlacesItemTableViewController.swift */; };
 		FABB65711ED346480060EFE9 /* JoiningUsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABB65701ED346480060EFE9 /* JoiningUsersTableViewController.swift */; };
+		FAE2FF7D1EDCEDEA0030778D /* JoiningUsersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE2FF7C1EDCEDEA0030778D /* JoiningUsersTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		FABB65681ED2FEDD0060EFE9 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		FABB656E1ED320940060EFE9 /* PlacesItemTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlacesItemTableViewController.swift; path = ../PlacesItemTableViewController.swift; sourceTree = "<group>"; };
 		FABB65701ED346480060EFE9 /* JoiningUsersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JoiningUsersTableViewController.swift; path = ../JoiningUsersTableViewController.swift; sourceTree = "<group>"; };
+		FAE2FF7C1EDCEDEA0030778D /* JoiningUsersTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoiningUsersTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,13 +99,14 @@
 			children = (
 				FABB65601ED227680060EFE9 /* MyOwn.entitlements */,
 				FABB655E1ED207220060EFE9 /* GoogleService-Info.plist */,
-				FA2099B31ED9F82D00CB96A0 /* PlaceTableViewCell.swift */,
-				FABB65701ED346480060EFE9 /* JoiningUsersTableViewController.swift */,
 				FABB65431ED1F2630060EFE9 /* AppDelegate.swift */,
-				FABB656E1ED320940060EFE9 /* PlacesItemTableViewController.swift */,
 				FABB65451ED1F2630060EFE9 /* LoginViewController.swift */,
 				FABB65681ED2FEDD0060EFE9 /* Button.swift */,
+				FA2099B31ED9F82D00CB96A0 /* PlaceTableViewCell.swift */,
+				FABB656E1ED320940060EFE9 /* PlacesItemTableViewController.swift */,
 				FABB65611ED2CDB70060EFE9 /* PlaceItem.swift */,
+				FAE2FF7C1EDCEDEA0030778D /* JoiningUsersTableViewCell.swift */,
+				FABB65701ED346480060EFE9 /* JoiningUsersTableViewController.swift */,
 				FABB65471ED1F2630060EFE9 /* Main.storyboard */,
 				FABB654A1ED1F2630060EFE9 /* Assets.xcassets */,
 				FABB654C1ED1F2630060EFE9 /* LaunchScreen.storyboard */,
@@ -247,6 +250,7 @@
 				FABB65461ED1F2630060EFE9 /* LoginViewController.swift in Sources */,
 				FA2099B41ED9F82D00CB96A0 /* PlaceTableViewCell.swift in Sources */,
 				FABB65711ED346480060EFE9 /* JoiningUsersTableViewController.swift in Sources */,
+				FAE2FF7D1EDCEDEA0030778D /* JoiningUsersTableViewCell.swift in Sources */,
 				FABB65441ED1F2630060EFE9 /* AppDelegate.swift in Sources */,
 				FABB65621ED2CDB70060EFE9 /* PlaceItem.swift in Sources */,
 			);

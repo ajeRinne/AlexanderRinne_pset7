@@ -10,37 +10,46 @@ import UIKit
 import Firebase
 
 class JoiningUsersTableViewController: UITableViewController {
+    
     // MARK: Constants
     var currentPlace : String?
-    let userCell = "UserCell"
+    
+//    Athenticate user
     let user = Auth.auth().currentUser
-    let placesRef = Database.database().reference(withPath: "place-items")
-//    var currentPlaceRef: Any?
-    // MARK: Properties
-    var joiningUsers: [String] = []
     
-    
+//    Setup reference
+    let placesRef = Database.database().reference(withPath: "users")
 
-    @IBOutlet var logoutBarButton2: UIBarButtonItem!
+    // MARK: Properties
+    var users = [Any]()
     
+    
+    // MARK: Outlets
+    @IBOutlet var logoutBarButton2: UIBarButtonItem!
     @IBOutlet var joinBarButton: UIBarButtonItem!
     
+    // MARK: Actions
     @IBAction func joinBarButtonTouched(_ sender: Any) {
-        let currentPlaceRef = placesRef.child(currentPlace!.lowercased()).child("joiningUserEmail").child("email")
-        currentPlaceRef.setValue(self.user?.email!)
-//            .child("joiningUsers").setValue(["username": user])
         
-//        let joiningUser = currentPlaceRef.child("joiningUsers").Child.setValue(user)
-        print("check7: \(currentPlace!)")
-        placesRef.observe(.value, with: {snapshot in
-            print(snapshot.value!)
-        })
-        currentPlaceRef.observe(.value, with: {snapshot in
-            print(snapshot.value!)
-        })
+//        Create references
+        let joiningUsersRef = placesRef.child(currentPlace!.lowercased())
+        let joiningUserRef = joiningUsersRef.childByAutoId()
+        
+//        Ensure users cannot login twice        
+        self.joinBarButton.isEnabled = false
+        self.joinBarButton.accessibilityElementsHidden = true
+        
+//        Set value of joining user in database
+        joiningUserRef.setValue(["email" : (self.user?.email!)])
+        self.tableView.reloadData()
+
+
     }
+    
     @IBAction func logoutBarButton2Touched(_ sender: Any) {
         do {
+            
+//            Authenticate user and sign out
             try Auth.auth().signOut()
             dismiss(animated: true, completion: nil)
         } catch {
@@ -48,24 +57,89 @@ class JoiningUsersTableViewController: UITableViewController {
         }
 
     }
-   
+    
+    // MARK: ViewController
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        Enable join button
+        self.joinBarButton.isEnabled = true
+        self.joinBarButton.accessibilityElementsHidden = false
 
-//        joiningUsers.append("hungry@person.food")
+//        Create a reference to users
+        let joiningUsersRef = placesRef.child(currentPlace!.lowercased())
+        
+//        Check if user is signed it
+        Auth.auth().addStateDidChangeListener { auth, user in
+            guard let currentUser = user else { return }
+            if Auth.auth().currentUser == nil {
+                print("no user signed it")
+            } else {
+                print("signed in")
+            }
+        }
+        
+//        Query attending users table
+        joiningUsersRef.queryOrdered(byChild: "email").observe(.value, with: { snapshot in
+            
+//            create a temporary storage
+            var newUsers = [Any]()
+
+//            Loop over users in snapshot
+            for user in snapshot.children.allObjects as! [DataSnapshot] {
+                
+//                Create dict in order to retreive data
+                let joiningUser = user.value! as! Dictionary<String, String>
+
+//                Get value from dict
+                let email = joiningUser["email"]
+
+//                Append email to temporary array
+                newUsers.append(email)
+            }
+            
+//            Copy value of temporary array in users array
+            self.users = newUsers
+            
+//            Reload data in order to get right view
+            self.tableView.reloadData()
+        })
+
+
     }
     
+    
+    // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return joiningUsers.count
+        return users.count
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: userCell, for: indexPath)
-        let onlineUserEmail = joiningUsers[indexPath.row]
-        cell.textLabel?.text = onlineUserEmail
+        
+//        Create reference for cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "JoiningUserCell", for: indexPath) as! JoiningUsersTableViewCell
+        
+//        Add email of joining user
+        let userItem = users[indexPath.row]
+        
+//        Display email in label of cell
+        cell.userLabel.text = userItem as! String
+
         return cell
     }
-    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+        
+    override func viewDidAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
+}
+
     
 
-}
+
